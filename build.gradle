@@ -3,18 +3,22 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.1'
+        classpath 'com.android.tools.build:gradle:1.3.1'
     }
 }
 apply plugin: 'android'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(include: '*.jar', dir: 'libs')
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/jg_filter_sdk_1.1.jar')
+    compile files('libs/wup-1.0.0.E-SNAPSHOT.jar')
+    compile files('libs/Xg_sdk_v2.41_20150915_1121.jar')
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
       lintOptions {
           abortOnError false
@@ -22,10 +26,10 @@ android {
 
     productFlavors {
 	dashi {
-			packageName='com.dashiweiwu.dashi'
+            applicationId'com.dashiweiwu.dashi'
 	}
 	gaoning {
-			packageName='com.dashiweiwu.gaoning'
+            applicationId'com.dashiweiwu.gaoning'
 	}
 	
 

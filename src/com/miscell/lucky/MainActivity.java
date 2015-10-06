@@ -25,6 +25,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import com.tencent.android.tpush.XGPushConfig;
+import com.tencent.android.tpush.XGPushManager;
+
 public class MainActivity extends Activity {
     private static final Intent sSettingsIntent =
             new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
@@ -36,6 +39,14 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 开启logcat输出，方便debug，发布时请关闭
+        XGPushConfig.enableDebug(this, true);
+        // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
+        // 如果需要绑定账号，请使用registerPush(getApplicationContext(),account)版本
+        // 具体可参考详细的开发指南
+        // 传递的参数为ApplicationContext
+        Context context = getApplicationContext();
+        XGPushManager.registerPush(context);
         setContentView(R.layout.main);
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
